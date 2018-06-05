@@ -1,3 +1,5 @@
+<?php include("conecta.php"); ?>
+
 <?php
 
     $nome = $_GET['nome'];
@@ -25,11 +27,12 @@
 
     }
 
-    $conexao = mysqli_connect('localhost', 'root', '', 'SAUTA');
-
-    if(insereCliente($conexao, $nome, $cpf, $data_nascimento, $email, $tel, $cel)){ ?>
+    if(insereCliente($conexao, $nome, $cpf, $data_nascimento, $email, $tel, $cel)){ 
+        
+        ?>
     
         <p class="text-success">O cliente <?= $nome ?> foi adicionado com sucesso.</p>
+
         <?php
 
     }
@@ -37,11 +40,11 @@
 
         $msg = mysqli_error($conexao);
 
-?>
+        ?>
 
         <p class="text-danger">O cliente <?= $nome ?> não pôde ser adicionado: <?= $msg?></p>
     
-    <?php 
+        <?php 
     }
 
     mysqli_close($conexao);
