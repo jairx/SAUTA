@@ -1,4 +1,6 @@
-        <h1>Cadastro de Cliente</h1>
+ <?php include 'head.php'; ?>
+ 
+ 		<h1>Cadastro de Cliente</h1>
 
 		<form action="home.php">
 			
@@ -15,3 +17,5 @@
             Celular:
             <input type="number" name="cel"></br>
 			<input type="submit" value="Cadastrar">
+
+<?php include 'footer.php'; ?>

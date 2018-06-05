@@ -1,14 +1,4 @@
-<!DOCTYPE HTML>
-	<html>
-	<head lang="pt-BR">
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>SAUTA</title>	
-	</head>
-	<body>
-		</header>
-            
-		</header>
+<?php include 'head.php'; ?>
 
         <h1>Cadastro de Cliente</h1>
 
@@ -25,8 +15,4 @@
 		
 		</form>
 
-		<footer>
-		</footer>
-
-	</body>
-</html>
+<?php include 'footer.php'; ?>
