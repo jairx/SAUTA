@@ -1,4 +1,4 @@
-<?php include 'head.php'; ?>
+<?php include("head.php"); ?>
 
 		<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -12,4 +12,4 @@
 			</div>
 		</nav>
 
-<?php include 'footer.php'; ?>
+<?php include("footer.php"); ?>

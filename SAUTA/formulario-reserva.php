@@ -1,4 +1,4 @@
-<?php include 'head.php'; ?>
+<?php include("head.php"); ?>
 
         <h1>Cadastro de Reserva</h1>
 
@@ -15,4 +15,4 @@
 		
 		</form>
 
-<?php include 'footer.php'; ?>
+<?php include("footer.php"); ?>

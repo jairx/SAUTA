@@ -1,4 +1,4 @@
- <?php include 'head.php'; ?>
+ <?php include("head.php"); ?>
  
  		<h1>Cadastro de Cliente</h1>
 
@@ -18,4 +18,4 @@
             <input type="number" name="cel"></br>
 			<input type="submit" value="Cadastrar">
 
-<?php include 'footer.php'; ?>
+<?php include("footer.php"); ?>
