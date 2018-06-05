@@ -7,27 +7,38 @@
     $tel = $_GET['tel'];
     $cel = $_GET['cel'];
 
+    function insereCliente($conexao, $nome, $cpf, $data_nascimento, $email, $tel, $cel) {
+
+        $query = "insert into CLIENTE (CPF, NOME_CLIENTE, DATA_NASCIMENTO, EMAIL) 
+                 values ({$cpf}, {$nome}, {$data_nascimento}, {$email});
+
+                 select ID_CLIENTE 
+                 into {$id_cliente} 
+                 from CLIENTE 
+                 where CPF = cpf;
+                 
+                 insert into TELEFONE (TELEFONE, ID_CLIENTE) values ({$tel}, {$id_cliente});
+
+                 insert into TELEFONE (TELEFONE, ID_CLIENTE) values ({$cel}, {$id_cliente});";
+
+        return = myqsli_query($conexao, $query);
+
+    }
+
     $conexao = mysqli_connect('localhost', 'root', '', 'SAUTA');
 
-    $query = "insert into CLIENTE (CPF, NOME_CLIENTE, DATA_NASCIMENTO, EMAIL) values ({$cpf}, {$nome}, {$data_nascimento}, {$email})";
-
-    $query = "select ID_CLIENTE into {$id_cliente} from CLIENTE where CPF = cpf";
-
-    $query = "insert into TELEFONE (TELEFONE, ID_CLIENTE) values ({$tel}, {$id_cliente})";
-
-    $query = "insert into TELEFONE (TELEFONE, ID_CLIENTE) values ({$cel}, {$id_cliente});
-
-    if(mysqli_query($conexao, $query)){ ?>
+    if(insereCliente($conexao, $nome, $cpf, $data_nascimento, $email, $tel, $cel)){ ?>
     
-        <p class="alert-success">O cliente <?= $nome ?> foi adicionado com sucesso.</p>
+        <p class="text-success">O cliente <?= $nome ?> foi adicionado com sucesso.</p>
         <?php
 
     }
     else{ ?>
 
-        <p class="alert-danger">O cliente <?= $nome ?> não pôde ser adicionado.</p>
+        <p class="text-danger">O cliente <?= $nome ?> não pôde ser adicionado.</p>
     
-    <?php }
+    <?php 
+    }
 
     mysqli_close($conexao);
 
