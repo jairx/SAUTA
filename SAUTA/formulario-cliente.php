@@ -2,7 +2,7 @@
  
  		<h1>Cadastro de Cliente</h1>
 
-		<form action="home.php">
+		<form action="home.php" method="post">
 			
             Nome:
 			<input type="text" name="nome"></br>

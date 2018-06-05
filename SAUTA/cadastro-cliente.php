@@ -1,13 +1,13 @@
-<?php include("conecta.php"); ?>
-
 <?php
 
-    $nome = $_GET['nome'];
-    $cpf = $_GET['cpf'];
-    $data_nascimento = $_GET['data_nascimento'];
-    $email = $_GET['email'];
-    $tel = $_GET['tel'];
-    $cel = $_GET['cel'];
+    include("conecta.php");
+
+    $nome = $_POST['nome'];
+    $cpf = $_POST['cpf'];
+    $data_nascimento = $_POST['data_nascimento'];
+    $email = $_POST['email'];
+    $tel = $_POST['tel'];
+    $cel = $_POST['cel'];
 
     function insereCliente($conexao, $nome, $cpf, $data_nascimento, $email, $tel, $cel) {
 
