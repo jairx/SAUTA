@@ -1,11 +1,11 @@
 <?php include 'head.php'; ?>
 
-        <h1>Cadastro de Cliente</h1>
+        <h1>Cadastro de Reserva</h1>
 
 		<form action="home.php">
 			
-            Data de Nascimento:
-            <input type="date" name="data_nascimento"></br>
+            Data:
+            <input type="date" name="data"></br>
             Horário: 
             <input type="time" name="horario"></br>
             Número de pessoas:
