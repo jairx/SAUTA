@@ -9,13 +9,11 @@
 		</header>
 		</header>
 
-		<form action="home.php">
-			Nome:
-			<input type="text" name="nome"></br>
-			
-			<input type="submit" value="Cadastrar">
-		
-		</form>
+		<a href="index.php">Home</a>
+		<a href="cadastro-cliente.php">Cadastro</a>
+		<a href="sobre.php">Sobre</a>
+		<a href="contato.php">Contato</a>
+		<a href="login.php">Login</a>
 
 		<footer>
 		</footer>
