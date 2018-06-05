@@ -33,9 +33,13 @@
         <?php
 
     }
-    else{ ?>
+    else{ 
 
-        <p class="text-danger">O cliente <?= $nome ?> não pôde ser adicionado.</p>
+        $msg = mysqli_error($conexao);
+
+?>
+
+        <p class="text-danger">O cliente <?= $nome ?> não pôde ser adicionado: <?= $msg?></p>
     
     <?php 
     }
