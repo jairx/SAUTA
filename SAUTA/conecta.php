@@ -1,3 +1,3 @@
 <?php
 
-    $conexao = mysqli_connect('localhost', 'root', '', 'SAUTA');
+    $conexao = mysqli_connect('localhost', 'teamx', 'Copa2018', 'SAUTA');

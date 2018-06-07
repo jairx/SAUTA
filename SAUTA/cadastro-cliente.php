@@ -25,7 +25,7 @@
 
         return = myqsli_query($conexao, $query);
 
-    }
+    }  
 
     if(insereCliente($conexao, $nome, $cpf, $data_nascimento, $email, $tel, $cel)){ 
         
@@ -42,7 +42,7 @@
 
         ?>
 
-        <p class="text-danger">O cliente <?= $nome ?> não pôde ser adicionado: <?= $msg?></p>
+        <p class="text-danger">O cliente <?= $nome ?> não pôde ser adicionado: <?= $msg?> </p>
     
         <?php 
     }
