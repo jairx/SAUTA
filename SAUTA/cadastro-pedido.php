@@ -12,6 +12,10 @@
 
         $query = "insert into PEDIDO (DATA, HORARIO, HORARIO_AGENDAMENTO, OBSERVACAO, ID_CLIENTE_MESA)
                   values ({$data}, {$horario}, {$horarioAgendamento}, {$observacao}, {$idClienteMesa});
+
+                  insert into PEDIDO_PRATO (QUANTIDADE, OBSERVACAO, ID_PEDIDO, ID_PRATO)
+
+                  insert into PEDIDO_BEBIDA (QUANTIDADE, OBSERVACAO, ID_PEDIDO, ID_BEBIDA)
                   ";
 
         return = mysqli_query($conexao, $query);
