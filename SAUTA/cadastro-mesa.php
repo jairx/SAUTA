@@ -3,6 +3,7 @@
     include("conecta.php");
 
     $numero_lugares = $_POST['numero_lugares'];
+    $mesa;
 
     function insereMesa($conexao, $numero_lugares){
 
