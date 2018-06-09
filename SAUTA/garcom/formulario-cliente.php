@@ -1,16 +1,16 @@
- <?php include("head.php"); ?>
+ <?php include("../head.php"); ?>
  
     <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav">
-				<a class="nav-item nav-link active" href="../index.php">Home<span class="sr-only">(current)</span></a>
+				<a class="nav-item nav-link active" href="../index-garcom.php">Home</a>
 			</div>
 		</div>
 	</nav>
 
     <h1>Cadastro de Cliente</h1>
 
-    <form action="home.php" method="post">
+    <form action="cadastro-cliente.php" method="post">
         
         Nome:
         <input type="text" name="nome"></br>
@@ -28,4 +28,4 @@
 
     </form>
 
-<?php include("footer.php"); ?>
+<?php include("../footer.php"); ?>

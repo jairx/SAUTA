@@ -2,41 +2,68 @@
 
     include("conecta.php");
 
-    $data = $_POST['data'];
-    $horario = $_POST['horario'];
-    $idCliente = $_POST['idCliente'];
-    $idMesa = $_POST['idMesa'];
+    $cpf = $_POST['cpf'];
+    $mesa = $_POST['mesa'];
 
-    function insereReserva($conexao, $data, $horario, $idCliente, $idMesa){
+    function insereCheckin($conexao, $cpf, $mesa, $idCliente){
 
         $query = "insert into CLIENTE_MESA (DATA, HORARIO, ID_CLIENTE, ID_MESA)
-                  values ({$data}, {$horario}, {$idCliente}, {$idMesa};
+                  values ({$data}, {$horario}, {$idCliente}, {$mesa}
                   ";
 
         return = mysqli_query($conexao, $query);
 
     }
 
-    if(insereReserva($conexao, $data, $horario, $idCliente, $idMesa)){
+    function verificaCheck($conexao, $cpf){
 
-        ?>
+        $query = "select count(1)
+                  from CLIENTE
+                  where CPF = {$cpf}";
 
-            <p class="text-success">Você foi adicionado à mesa <?= $idMesa ?> com sucesso!</p>
+        $query2 = "select ID_CLIENTE
+                   from CLIENTE
+                   where CPF = {$cpf}";
 
-        <?php
+        $query3 = "select count(1)
+                   from CLIENTE_MESA
+                   where ID_CLIENTE = {$idCliente}";
+        
+        $query4 = "delete from CLIENTE_MESA
+                   where ID_CLIENTE = {$idCliente};";
 
-    }
-    else{
+        if (($isThere = mysqli_query($conexao, $query))){
+            if($isThere===1){
+                if(($idCliente = mysqli_query($conexao, $query2))){
+                    if(($contador = mysqli_query($conexao, $query3))){
+                        if($contador===1){
+                            if(mysqli_query($conexao, $query4)){
+                                header("Location: ../index.php?check=3347");
+                            }
+                            else{
+                                $msg = mysqli_error($conexao);
+                                header("Location: ../index.php?check=666&msg=<?=$msg?>");
+                            }
+                        }
+                        else{
+                            if(insereCheckin($conexao, $cpf, $mesa, $idCliente)){
+                                header("Location: ../index.php?check=3348");
+                            }
+                            else{
+                                $msg = mysqli_error($conexao);
+                                header("Location: ../index.php?check=666&msg=<?=$msg?>");
+                            }
+                        }
+                    }
+                }
+            }
+            else{
 
-        $msg = mysqli_error($conexao);
+                header("Location: ../index.php?check=3349");
 
-        ?>
-
-            <p class="text-danger">Você não pôde ser adicionado à mesa <?= $idMesa ?>: <?= $msg ?> </p>
-
-        <?php
-
-    }
+            }
+            
+        }
 
     mysqli_close($conexao);
 

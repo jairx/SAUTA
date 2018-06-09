@@ -1,6 +1,6 @@
 <?php
 
-    include("conecta.php");
+    include("../conecta.php");
 
     $nome = $_POST['nome'];
     $cpf = $_POST['cpf'];
