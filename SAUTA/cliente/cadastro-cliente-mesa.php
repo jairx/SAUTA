@@ -1,6 +1,6 @@
 <?php
 
-    include("conecta.php");
+    include("../conecta.php");
 
     $cpf = $_POST['cpf'];
     $mesa = $_POST['mesa'];
@@ -14,7 +14,7 @@
                   values ({$data}, {$horario}, {$idCliente}, {$mesa}
                   ";
 
-        return = mysqli_query($conexao, $query);
+        return mysqli_query($conexao, $query);
 
     }
 
@@ -67,6 +67,7 @@
             }
             
         }
+    }
 
     mysqli_close($conexao);
 
