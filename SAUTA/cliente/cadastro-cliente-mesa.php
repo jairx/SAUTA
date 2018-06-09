@@ -7,6 +7,9 @@
 
     function insereCheckin($conexao, $cpf, $mesa, $idCliente){
 
+        include("../getdate.php");
+        include("../gettime.php");
+        
         $query = "insert into CLIENTE_MESA (DATA, HORARIO, ID_CLIENTE, ID_MESA)
                   values ({$data}, {$horario}, {$idCliente}, {$mesa}
                   ";
