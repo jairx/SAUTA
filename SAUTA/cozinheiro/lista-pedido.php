@@ -11,6 +11,7 @@
                   inner join PRATO c on c.ID_PRATO = b.ID_PRATO
                   inner join PEDIDO_BEBIDA d on d.ID_PEDIDO = a.ID_PEDIDO
                   inner join BEBIDA e on e.ID_BEBIDA = d.ID_BEBIDA
+                  where a.PRONTO = 
                   ";
         $resultado = mysqli_query($conexao, $query);
         

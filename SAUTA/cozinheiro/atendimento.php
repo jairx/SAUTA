@@ -16,6 +16,9 @@
                   where ID_GARCOM = {$idGarcom}
                   and FIM = 'null';
                   ";
+                  
+        $query2 = "
+                  ";
 
         return mysqli_query($conexao, $query);
 
