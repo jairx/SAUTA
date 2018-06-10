@@ -1,6 +1,8 @@
 <?php
 
     include("conecta.php");
+    include("../data-hora.php");
+    include("seleciona-garcom.php");
 
     $idPedido = $_POST['id'];
 
@@ -15,11 +17,11 @@
                   and FIM = 'null';
                   ";
 
-        return = mysqli_query($conexao, $query);
+        return mysqli_query($conexao, $query);
 
     }
 
-    if(insereAtendimento($conexao, $inicio, $idPedido, $idGarcom)){
+    if(insereAtendimento($conexao, $hora, $idPedido, $idGarcom)){
 
         ?>
 

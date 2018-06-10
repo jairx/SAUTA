@@ -12,6 +12,7 @@ NOME_PAUSA varchar(20) not null
 CREATE TABLE INTERRUPCOES_JORNADA (
 ID_PAUSA int PRIMARY KEY auto_increment,
 DATA date not null,
+DATA_FIM date,
 INICIO time not null,
 FIM time,
 ID_TIPO_PAUSA int not null,
@@ -70,6 +71,7 @@ CREATE TABLE CLIENTE_MESA (
 ID_CLIENTE_MESA int PRIMARY KEY auto_increment,
 DATA date not null,
 HORARIO time not null,
+HORARIO_FIM time,
 ID_CLIENTE int not null,
 ID_MESA int not null,
 FOREIGN KEY(ID_CLIENTE) REFERENCES CLIENTE (ID_CLIENTE),
@@ -82,6 +84,7 @@ DATA date not null,
 HORARIO time not null,
 HORARIO_AGENDAMENTO time not null,
 OBSERVACAO varchar(200),
+PRONTO boolean,
 ID_CLIENTE_MESA int not null,
 FOREIGN KEY(ID_CLIENTE_MESA) REFERENCES CLIENTE_MESA (ID_CLIENTE_MESA)
 );
