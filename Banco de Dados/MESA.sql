@@ -1,9 +1,0 @@
-INSERT INTO MESA (NUMERO_LUGARES)
-VALUES (2),
-(4),
-(5),
-(2),
-(10),
-(20),
-(30),
-(8);
