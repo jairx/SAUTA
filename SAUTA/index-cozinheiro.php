@@ -1,4 +1,6 @@
 <?php include("head.php"); 
+	  include("conecta.php");
+	  include("cozinheiro/lista-pedido.php");
 
 $pedidos = listaPedido($conexao);
 ?>
@@ -12,11 +14,37 @@ $pedidos = listaPedido($conexao);
 	</nav>
 
 	<td>Pedidos</td>
-	<td>
+	<tr onload="setTimeout('Atualizar()', 60000)">
+			<td>Prato</td>
+			<td>Quantidade</td>
+			<td>Obs de Prato</td>
+			<td>Bebida</td>
+			<td>Quantidade</td>
+			<td>Obs de Bebida</td>
+			<td>Hora agendada</td>
+			<td>Obs de Pedido</td>
 		<?php foreach($pedidos as $pedido): ?>
-			<?= $pedido ?>
-			<input type="submit" value="<?= $pedido['ID_PEDIDO'] ?>"
+			<td><?= $pedido['PRATO'] ?></td>
+			<td><?= $pedido['QUANTIDADE'] ?></td>
+			<td><?= $pedido['OBS_PRATO'] ?></td>
+			<td><?= $pedido['BEBIDA'] ?></td>
+			<td><?= $pedido['QUANTIDADE'] ?></td>
+			<td><?= $pedido['OBS_BEBIDA'] ?></td>
+			<td><?= $pedido['HORARIO_AGENDAMENTO'] ?></td>
+			<td><?= $pedido['OBS_PEDIDO'] ?></td>
+			<td>
+				<form action="cozinheiro/atendimento.php" method="POST">
+					<input type="hidden" name="id" value="<?= $pedido['ID_PEDIDO'] ?>">
+					<button class="btn btn-danger">Pronto</button>
+				</form>
+			</td>
 
 		<?php endforeach ?>
+	</tr>
 
+<script type="text/javascript">
+	function Atualizar(){
+		window.location.reload();
+	}
+</script>
 <?php include("footer.php"); ?>

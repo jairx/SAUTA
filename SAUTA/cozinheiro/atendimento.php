@@ -2,9 +2,7 @@
 
     include("conecta.php");
 
-    $inicio = $_POST['inicio'];
-    $idPedido = $_POST['idPedido'];
-    $idGarcom = $_POST['idGarcom'];
+    $idPedido = $_POST['id'];
 
     function insereAtendimento($conexao, $inicio, $idPedido, $idGarcom){
 
