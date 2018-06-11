@@ -1,17 +1,19 @@
 <?php
 
     include("conecta.php");
-    include("data-hora-br.php");
+    include("data-hora.php");
 
     function listaPedidos($conexao){
 
         $query = "select a.ID_PEDIDO, a.ID_GARCOM, a.DATA, a.DATA_FIM, a.HORARIO,
                   a.HORARIO_FIM, a.HORARIO_AGENDAMENTO,
                   b.ID_MESA,
-                  c.NOME_CLIENTE 
+                  c.NOME_CLIENTE,
+                  d.NOME_GARCOM
                   from PEDIDO a
                   inner join CLIENTE_MESA b on b.ID_CLIENTE_MESA = a.ID_CLIENTE_MESA
                   inner join CLIENTE c on c.ID_CLIENTE = b.ID_CLIENTE
+                  inner join GARCOM d on d.ID_GARCOM = a.ID_GARCOM
                   where a.PRONTO = 1
                   and a.ATENDIDO is null                  
                   ";
@@ -27,6 +29,8 @@
             <table class="table" onload="setTimeout('Atualizar()', 60000)">
                
                 <tr>
+                    <td>Pedido</td>
+                    <td>Garçom</td>
                     <td>Data do Pedido</td>
                     <td>Horário</td>
                     <td>Data Pronto Cozinha</td>
@@ -36,14 +40,11 @@
                     <td>Mesa</td>
                 </tr>
 
-                <?php foreach($pedidoGarcom as $pedido): 
-                
-                    $pedido['DATA'] = dataGente($pedido['DATA']);
-                    $pedido['DATA_FIM'] = dataGente($pedido['DATA_FIM']);
-                
-                ?>
+                <?php foreach($pedidoGarcom as $pedido): ?>
 
                     <tr>
+                        <td><?= $pedido['ID_PEDIDO'] ?></td>
+                        <td><?= $pedido['NOME_GARCOM'] ?></td>
                         <td><?= $pedido['DATA'] ?></td>
                         <td><?= $pedido['HORARIO'] ?></td>
                         <td><?= $pedido['DATA_FIM'] ?></td>

@@ -1,6 +1,6 @@
 <?php
 
-    include("../conecta.php");
+    include("conecta.php");
 
     $garcom = array();
     $tipos_pausa = array();

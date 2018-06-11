@@ -21,7 +21,7 @@
             </select>
         </div>
         <div>
-            <button class="btn btn-success">Pausar</button>
+            <button class="btn btn-success">Pausar/Retornar</button>
         </div>
     </div>
 </form>
