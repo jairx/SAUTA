@@ -15,11 +15,13 @@
 
 		<?php include("garcom/lista-atendimento.php"); ?>		
 
-	<h2>Pedidos</h2></br></br>
+	<h2><a href="garcom/formulario-pedido.php">Pedidos</a></h2></br></br>
 
-	<h2>Cadastro de Clientes</h2></br></br>
+	<h2><a href="garcom/formulario-cliente.php">Cadastro de Clientes</a></h2></br></br>
 
 	<h2>Pausa</h2></br></br>
+
+		<?php include("garcom/formulario-pausa.php"); ?>
 
 <script type="text/javascript">
 	function Atualizar(){
