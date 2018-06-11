@@ -4,6 +4,8 @@
 			$check = $_POST['check'];
 		}
 		else{
+
+			
 			$check = 0;
 		};
 

@@ -78,16 +78,16 @@ VALUES ("2018-06-04", "2018-06-04", "14:00:00", "15:27:33", 1, 3),
 ("2018-06-11", null, "21:00:00", null, 3, 5),
 ("2018-06-11", null, "22:30:00", null, 4, 2);
 
-insert into PEDIDO (DATA, DATA_FIM, HORARIO, HORARIO_FIM, HORARIO_AGENDAMENTO, PRONTO, ID_GARCOM, OBSERVACAO, ID_CLIENTE_MESA)
-values ("2017-11-18", "2017-11-18", "00:11:00", "00:23:15", "00:15:00", true, 2, "que nao demore muito", 1), 
-("2018-02-14", "2018-02-14", "00:15:12", "00:37:15", "00:23:00", true, 3, "sem demora", 1),
-("2018-05-17", "2018-05-17", "18:11:37", "19:03:31", "18:17:00", true, 6, "no late", 2), 
-("2018-05-23", "2018-05-23", "14:17:32", "14:48:59", "14:44:20", true, 4, "me surpreenda", 4),
-("2018-06-08", "2018-06-08", "15:23:32", "15:43:13", "15:38:07", true, 7, "no tempo", 3);
+insert into PEDIDO (DATA, DATA_FIM, HORARIO, HORARIO_FIM, HORARIO_AGENDAMENTO, PRONTO, ATENDIDO, ID_GARCOM, OBSERVACAO, ID_CLIENTE_MESA)
+values ("2017-11-18", "2017-11-18", "00:11:00", "00:23:15", "00:15:00", true, "00:17:13", 2, "que nao demore muito", 1), 
+("2018-02-14", "2018-02-14", "00:15:12", "00:37:15", "00:23:00", true, "00:34:00", 3, "sem demora", 1),
+("2018-05-17", "2018-05-17", "18:11:37", "19:03:31", "18:17:00", true, "18:18:57", 6, "no late", 2), 
+("2018-05-23", "2018-05-23", "14:17:32", "14:48:59", "14:44:20", true, "15:23:12", 4, "me surpreenda", 4),
+("2018-06-08", "2018-06-08", "15:23:32", "15:43:13", "15:38:07", true, null, 7, "no tempo", 3);
 
-insert into PEDIDO (DATA, DATA_FIM, HORARIO, HORARIO_FIM, HORARIO_AGENDAMENTO, PRONTO, OBSERVACAO, ID_CLIENTE_MESA)
-values ("2018-06-10", null, "11:14:57", null, "11:26:14", false, "tanto faz", 5),
-("2018-06-10", null, "16:52:54", null, "17:06:33", false, "kero", 2);
+insert into PEDIDO (DATA, DATA_FIM, HORARIO, HORARIO_FIM, HORARIO_AGENDAMENTO, PRONTO, ATENDIDO, OBSERVACAO, ID_CLIENTE_MESA)
+values ("2018-06-10", null, "11:14:57", null, "11:26:14", false, null, "tanto faz", 5),
+("2018-06-10", null, "16:52:54", null, "17:06:33", false, null, "kero", 2);
 
 insert into TIPO_PRATO (TIPO_PRATO)
 values ("Japonês"), 

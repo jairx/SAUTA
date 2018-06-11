@@ -11,10 +11,19 @@
 
 	<h1>Tela de Garçom</h1></br></br></br></br>
 
-	<h2>Cadastro de Clientes</h2></br></br>
-
 	<h2>Atendimento</h2></br></br>
+
+		<?php include("garcom/lista-atendimento.php"); ?>		
+
+	<h2>Pedidos</h2></br></br>
+
+	<h2>Cadastro de Clientes</h2></br></br>
 
 	<h2>Pausa</h2></br></br>
 
+<script type="text/javascript">
+	function Atualizar(){
+		window.location.reload();
+	}
+</script>
 <?php include("footer.php"); ?>

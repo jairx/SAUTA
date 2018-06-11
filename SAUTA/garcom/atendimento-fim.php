@@ -1,36 +1,24 @@
 <?php
 
-    include("conecta.php");
+    include("../conecta.php");
+    include("../data-hora.php");
 
-    $idAtendimento = $_POST['idAtendimento'];
-    $horario = $_POST['horario'];
+    $idPedido = $_POST['idPedido'];
+    $idGarcom = $_POST['idGarcom'];
 
-    function insereFimAtendimento($conexao, $idAtendimento, $horario){
+    function insereFimAtendimento($conexao, $hora, $idPedido, $idGarcom, $data){
 
-        $query = "UPDATE ATENDIMENTO
-                  set FIM = {$horario}
-                  where ID_ATENDIMENTO = {$idAtendimento};
-                  
-                  select ID_GARCOM
-                  into {$idGarcom}
-                  from ATENDIMENTO
-                  where ID_ATENDIMENTO = {$idAtendimento};
+        $query = "update PEDIDO set ATENDIDO = '{$hora}' where ID_PEDIDO = {$idPedido};";
 
-                  insert into DISPONIBILIDADE (INICIO, ID_GARCOM)
-                  values ({$horario}, {$idGarcom});                  
-                  ";
+        $query .= "insert into DISPONIBILIDADE (DATA_INICIO, INICIO, ID_GARCOM) values ({$data}, {$hora}, {$idGarcom})";
 
-        return = mysqli_query($conexao, $query);
+        return mysqli_multi_query($conexao, $query);
 
     }
 
-    if(insereFimAtendimento($conexao, $idAtendimento, $horario)){
+    if(insereFimAtendimento($conexao, $hora, $idPedido, $idGarcom, $data)){
 
-        ?>
-
-            <p class="text-success">O seu atendimento foi finalizado com sucesso! </p>
-
-        <?php
+            header("Location: ../index-garcom.php");
 
     }
     else{
@@ -39,7 +27,7 @@
 
         ?>
 
-            <p class="text-danger">Houve um erro ao tentar finalizar seu atendimento: <?= $msg ?> </p>
+            <p class="text-danger">Houve um erro ao tentar finalizar seu atendimento.</br></br> <?= $msg ?> </p>
 
         <?php
 
