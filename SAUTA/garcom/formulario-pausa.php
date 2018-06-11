@@ -1,3 +1,5 @@
+<?php include("seleciona-pausa-garcom.php"); ?>
+
 <form action="garcom/cadastro-pausa.php" method="POST">
     <div>
         <div>

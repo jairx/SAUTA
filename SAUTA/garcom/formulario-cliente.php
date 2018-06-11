@@ -1,4 +1,10 @@
- <?php include("../head.php"); ?>
+ <?php include("../head.php"); 
+ 
+ if(array_key_exists($_GET['msg'])){
+     $msg = $_GET['msg'];
+ }
+
+ ?>
  
     <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -27,5 +33,7 @@
         <input type="submit" value="Cadastrar">
 
     </form>
+
+    <?php $msg ?>
 
 <?php include("../footer.php"); ?>
