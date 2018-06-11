@@ -12,7 +12,7 @@
         <div>
             <select name="tipo_pausa" class="form-control">
                 <?php foreach($tipos_pausa as $tipo): ?>
-                    <option value="<?= $tipo['ID_TIPO_BEBIDA'] ?>">
+                    <option value="<?= $tipo['ID_TIPO_PAUSA'] ?>">
                         <?= $tipo['NOME_PAUSA'] ?>
                     </option>
                 <?php endforeach ?>
