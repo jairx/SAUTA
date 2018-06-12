@@ -3,6 +3,7 @@
 <form action="garcom/verifica-pausa.php" method="POST">
     <div>
         <div>
+            Nome do Garçom:
             <select name="garcom" class="form-control">
                 <?php foreach($garcom as $bar): ?>
                     <option value="<?= $bar['ID_GARCOM'] ?>">
@@ -12,6 +13,7 @@
             </select>
         </div>
         <div>
+            Tipo de Pausa:
             <select name="tipo_pausa" class="form-control">
                 <?php foreach($tipos_pausa as $tipo): ?>
                     <option value="<?= $tipo['ID_TIPO_PAUSA'] ?>">

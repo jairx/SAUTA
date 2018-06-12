@@ -20,7 +20,7 @@
             
         if($countTel===1){
 
-            $query .= "insert into TELEFONE (TELEFONE, ID_CLIENTE) values ('{$tel}', {$id_cliente});"
+            $query .= "insert into TELEFONE (TELEFONE, ID_CLIENTE) values ('{$tel}', {$id_cliente});";
 
         }
 
