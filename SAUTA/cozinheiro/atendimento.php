@@ -1,50 +1,35 @@
 <?php
 
-    include("conecta.php");
+    include("../conecta.php");
     include("../data-hora.php");
-    include("seleciona-garcom.php");
 
-    $idPedido = $_POST['id'];
+    $idPedido = $_POST['idPedido'];
 
-    function insereAtendimento($conexao, $inicio, $idPedido, $idGarcom){
+    function insereAtendimento($conexao, $data, $hora, $idPedido, $idGarcom){
 
-        $query = "insert into ATENDIMENTO (INICIO, ID_PEDIDO, ID_GARCOM)
-                  values ({$inicio}, {$idPedido}, {$idGarcom});
-                  
-                  update DISPONIBILIDADE
-                  set FIM = {$inicio}
-                  where ID_GARCOM = {$idGarcom}
-                  and FIM = 'null';
-                  ";
-                  
-        $query2 = "
-                  ";
+        $query = "update PEDIDO
+                  set DATA_FIM = {$data}, HORARIO_FIM = {$hora}, PRONTO = 1, ID_GARCOM = {$idGarcom}
+                  where ID_PEDIDO = {$idPedido}";
 
         return mysqli_query($conexao, $query);
 
     }
 
-    if(insereAtendimento($conexao, $hora, $idPedido, $idGarcom)){
+    include("seleciona-garcom.php");
 
-        ?>
+    if(insereAtendimento($conexao, $data, $hora, $idPedido, $idGarcom)){
 
-            <p class="text-success">O seu pedido está para ser atendido! </p>
+        $cozinhado = 1;
 
-        <?php
+        header('Location: ../index-cozinheiro.php?cozinhado=<?=$cozinhado?>');
 
     }
     else{
 
         $msg = mysqli_error($conexao);
 
-        ?>
-
-            <p class="text-danger">Houve um erro ao tentar transferir seu pedido para atendimento: <?= $msg ?> </p>
-
-        <?php
+        header('Location: ../index-cozinheiro.php?msg=<?=$msg?>');
 
     }
 
-    mysqli_close($conexao);
-
-?>
+    mysqli_close($conexao); 

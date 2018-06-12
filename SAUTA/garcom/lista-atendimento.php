@@ -7,13 +7,12 @@
 
         $query = "select a.ID_PEDIDO, a.ID_GARCOM, a.DATA, a.DATA_FIM, a.HORARIO,
                   a.HORARIO_FIM, a.HORARIO_AGENDAMENTO,
-                  b.ID_MESA,
-                  c.NOME_CLIENTE,
-                  d.NOME_GARCOM
+                  b.ID_MESA, b.ID_CLIENTE_MESA,
+                  b.NOME_CLIENTE,
+                  c.NOME_GARCOM
                   from PEDIDO a
-                  inner join CLIENTE_MESA b on b.ID_CLIENTE_MESA = a.ID_CLIENTE_MESA
-                  inner join CLIENTE c on c.ID_CLIENTE = b.ID_CLIENTE
-                  inner join GARCOM d on d.ID_GARCOM = a.ID_GARCOM
+                  left join (select clime.ID_MESA, clime.ID_CLIENTE_MESA, clime.ID_CLIENTE, cli.NOME_CLIENTE from CLIENTE_MESA clime inner join CLIENTE cli on clime.ID_CLIENTE = cli.ID_CLIENTE) b on b.ID_CLIENTE_MESA = a.ID_CLIENTE_MESA
+                  left join GARCOM c on c.ID_GARCOM = a.ID_GARCOM
                   where a.PRONTO = 1
                   and a.ATENDIDO is null                  
                   ";

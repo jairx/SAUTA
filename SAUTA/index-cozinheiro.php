@@ -12,37 +12,55 @@ $pedidos = listaPedido($conexao);
 			</div>
 		</div>
 	</nav>
+		
+	<h2>Pedidos</h2></br></br>
+	<table class="table" onload="setTimeout('Atualizar()', 60000)">
 
-	<div onload="setTimeout('Atualizar()', 60000)">
-		<td>Pedidos</td>
 		<tr>
-				<td>Prato</td>
-				<td>Quantidade</td>
-				<td>Obs de Prato</td>
-				<td>Bebida</td>
-				<td>Quantidade</td>
-				<td>Obs de Bebida</td>
-				<td>Hora agendada</td>
-				<td>Obs de Pedido</td>
+			<td>Mesa</td>
+			<td>Prato</td>
+			<td>Quantidade</td>
+			<td>Observação de Prato</td>
+			<td>Bebida</td>
+			<td>Quantidade</td>
+			<td>Observação de Bebida</td>
+			<td>Hora agendada</td>
+			<td>Observação de Pedido</td>
+		</tr>
+		<tr>
 			<?php foreach($pedidos as $pedido): ?>
+				<td><?= $pedido['ID_MESA'] ?></td>
 				<td><?= $pedido['PRATO'] ?></td>
-				<td><?= $pedido['QUANTIDADE'] ?></td>
+				<td><?= $pedido['QTD_PRATO'] ?></td>
 				<td><?= $pedido['OBS_PRATO'] ?></td>
 				<td><?= $pedido['BEBIDA'] ?></td>
-				<td><?= $pedido['QUANTIDADE'] ?></td>
+				<td><?= $pedido['QTD_BEBIDA'] ?></td>
 				<td><?= $pedido['OBS_BEBIDA'] ?></td>
 				<td><?= $pedido['HORARIO_AGENDAMENTO'] ?></td>
 				<td><?= $pedido['OBS_PEDIDO'] ?></td>
 				<td>
 					<form action="cozinheiro/atendimento.php" method="POST">
-						<input type="hidden" name="id" value="<?= $pedido['ID_PEDIDO'] ?>">
-						<button class="btn btn-danger">Pronto</button>
+						<input type="hidden" name="idPedido" value="<?= $pedido['ID_PEDIDO'] ?>">
+						<button class="btn btn-success">Pronto</button>
 					</form>
 				</td>
 
 			<?php endforeach ?>
 		</tr>
-	</div>
+	</table>
+
+<?php
+	if(isset($_GET['cozinhado'])){
+		?>
+		<p class="text-success">Pedido encaminhado para atendimento com sucesso!</p>
+		<?php
+	}
+	if(isset($_GET['msg'])){
+		?>
+		<p class="text-danger">Houve um erro ao tentar transferir o pedido para atendimento: <?= $_GET['msg'] ?> </p>
+		<?php
+	}
+?>
 
 <script type="text/javascript">
 	function Atualizar(){

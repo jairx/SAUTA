@@ -9,11 +9,13 @@
                   b.ID_MESA,
                   b.NOME_CLIENTE,
                   d.PRATO, d.OBSERVACAO as OBS_PRATO,
+                  d.TEMPO_PREPARO as TEMPO_PRATO,
+                  f.TEMPO_PREPARO as TEMPO_BEBIDA,
                   f.BEBIDA, f.OBSERVACAO as OBS_BEBIDA
                   from PEDIDO a
                   left join (select clime.ID_CLIENTE_MESA, cli.NOME_CLIENTE, clime.ID_MESA from CLIENTE_MESA clime inner join CLIENTE cli on cli.ID_CLIENTE = clime.ID_CLIENTE) b on b.ID_CLIENTE_MESA = a.ID_CLIENTE_MESA
-                  left join (select pepa.ID_PEDIDO, pr.PRATO, pepa.OBSERVACAO from PEDIDO_PRATO pepa inner join PRATO pr on pr.ID_PRATO = pepa.ID_PRATO) d on d.ID_PEDIDO = a.ID_PEDIDO
-                  left join (select pebe.ID_PEDIDO, be.BEBIDA, pebe.OBSERVACAO from PEDIDO_BEBIDA pebe inner join BEBIDA be on be.ID_BEBIDA = pebe.ID_BEBIDA) f on f.ID_PEDIDO = a.ID_PEDIDO
+                  left join (select pepa.ID_PEDIDO, pr.TEMPO_PREPARO, pr.PRATO, pepa.OBSERVACAO from PEDIDO_PRATO pepa inner join PRATO pr on pr.ID_PRATO = pepa.ID_PRATO) d on d.ID_PEDIDO = a.ID_PEDIDO
+                  left join (select pebe.ID_PEDIDO, be.TEMPO_PREPARO, be.BEBIDA, pebe.OBSERVACAO from PEDIDO_BEBIDA pebe inner join BEBIDA be on be.ID_BEBIDA = pebe.ID_BEBIDA) f on f.ID_PEDIDO = a.ID_PEDIDO
                   where a.PRONTO = 0
                   order by b.NOME_CLIENTE, b.ID_MESA";
 
@@ -25,7 +27,7 @@
 
         ?>
 
-            <form action="garcom/formulario-pedido.php">
+            <form action="garcom/formulario-pedido?garcomNovoPedido='227'.php">
 
                 <button class="btn btn-primary">Novo</button></br>
 
