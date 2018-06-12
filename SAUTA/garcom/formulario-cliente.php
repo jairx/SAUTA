@@ -30,7 +30,7 @@
     </form>
 
 <?php
- if(array_key_exists($_GET['msg'])){
+ if(isset($_GET['msg'])){
     
     $msg = $_GET['msg'];
 
@@ -40,4 +40,6 @@
 
  }
 
-include("../footer.php"); ?>
+ ?>
+
+<?php include("../footer.php"); ?>

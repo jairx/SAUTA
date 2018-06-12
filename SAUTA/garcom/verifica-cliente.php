@@ -2,19 +2,19 @@
 
 $msg = "Favor preencher todos os campos.";
 
-if(array_key_exists($_POST['nome'])){
+if(isset($_POST['nome'])){
 
     $nome = $_POST['nome'];
 
-    if(array_key_exists($_POST['cpf'])){
+    if(isset($_POST['cpf'])){
 
         $cpf = $_POST['cpf'];
 
-        if(array_key_exists($_POST['data_nascimento'])){
+        if(isset($_POST['data_nascimento'])){
 
             $data_nascimento = $_POST['data_nascimento'];
 
-            if(array_key_exists($_POST['email'])){
+            if(isset($_POST['email'])){
 
                 $email = $_POST['email'];
 
@@ -46,17 +46,25 @@ else{
 };
 
 
-if(array_key_exists($_POST['tel'])){
+if(isset($_POST['tel'])){
 
-    $tel = $_POST['tel'];
-    $countTel = 1;
+    if($_POST['tel'] != null){
+
+        $tel = $_POST['tel'];
+        $countTel = 1;
+
+    }
 
 };
 
-if(array_key_exists($_POST['cel'])){
+if(isset($_POST['cel'])){
 
-    $cel = $_POST['cel'];
-    $countCel = 1;
+    if($_POST['cel'] != null){
+
+        $cel = $_POST['cel'];
+        $countCel = 1;
+
+    }
 
 };
 

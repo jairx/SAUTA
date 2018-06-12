@@ -7,15 +7,15 @@
 
         $query = "select a.ID_PEDIDO, a.DATA, a.HORARIO, a.HORARIO_AGENDAMENTO, a.OBSERVACAO,
                   b.ID_MESA,
-                  c.NOME_CLIENTE
+                  b.NOME_CLIENTE,
+                  d.PRATO, d.OBSERVACAO as OBS_PRATO,
+                  f.BEBIDA, f.OBSERVACAO as OBS_BEBIDA
                   from PEDIDO a
-                  inner join CLIENTE_MESA b on b.ID_CLIENTE_MESA = a.ID_CLIENTE_MESA
-                  inner join CLIENTE c on c.ID_CLIENTE = b.ID_CLIENTE
-                  inner join PEDIDO_PRATO d on d.ID_PEDIDO = a.ID_PEDIDO
-                  inner join PRATO e on e.ID_PRATO = d.ID_PRATO
-                  inner join PEDIDO_BEBIDA f on f.ID_PEDIDO = a.ID_PEDIDO
-                  inner join BEBIDA g on g.ID_BEBIDA = f.ID_BEBIDA
-                  order by c.NOME_CLIENTE, ID_MESA";
+                  left join (select clime.ID_CLIENTE_MESA, cli.NOME_CLIENTE, clime.ID_MESA from CLIENTE_MESA clime inner join CLIENTE cli on cli.ID_CLIENTE = clime.ID_CLIENTE) b on b.ID_CLIENTE_MESA = a.ID_CLIENTE_MESA
+                  left join (select pepa.ID_PEDIDO, pr.PRATO, pepa.OBSERVACAO from PEDIDO_PRATO pepa inner join PRATO pr on pr.ID_PRATO = pepa.ID_PRATO) d on d.ID_PEDIDO = a.ID_PEDIDO
+                  left join (select pebe.ID_PEDIDO, be.BEBIDA, pebe.OBSERVACAO from PEDIDO_BEBIDA pebe inner join BEBIDA be on be.ID_BEBIDA = pebe.ID_BEBIDA) f on f.ID_PEDIDO = a.ID_PEDIDO
+                  where a.PRONTO = 0
+                  order by b.NOME_CLIENTE, b.ID_MESA";
 
         return mysqli_query($conexao, $query);
 
@@ -39,32 +39,38 @@
                     <td>Horário</td>
                     <td>Término Previsto</td>
                     <td>Observacao</td>
+                    <td>Prato</td>
+                    <td>Observação</td>
+                    <td>Bebida</td>
+                    <td>Observação</td>
                     <td>Mesa</td>
                 </tr>
 
                 <?php foreach($pedidoCozinha as $pedido): ?>
 
                     <tr>
-                        <td><?= $pedido['ID_PEDIDO'] ?></td>
-                        <td><?= $pedido['NOME_GARCOM'] ?></td>
+                        <td><?= $pedido['NOME_CLIENTE'] ?></td>
                         <td><?= $pedido['DATA'] ?></td>
                         <td><?= $pedido['HORARIO'] ?></td>
-                        <td><?= $pedido['DATA_FIM'] ?></td>
-                        <td><?= $pedido['HORARIO_FIM'] ?></td>
+                        <td><?= $pedido['HORARIO_AGENDAMENTO'] ?></td>
+                        <td><?= $pedido['OBSERVACAO'] ?></td>
+                        <td><?= $pedido['PRATO'] ?></td>
+                        <td><?= $pedido['OBS_PRATO'] ?></td>
+                        <td><?= $pedido['BEBIDA'] ?></td>
+                        <td><?= $pedido['OBS_BEBIDA'] ?></td>
+                        <td><?= $pedido['ID_MESA'] ?></td>
 
                         <td>
-                            <form action="garcom/formulario-pedido.php" method="POST">
+                            <form action="garcom/editar-pedido.php" method="POST">
                                 <input type="hidden" name="idPedido" value="<?= $pedido['ID_PEDIDO'] ?>">
-                                <input type="hidden" name="idGarcom" value="<?= $pedido['ID_GARCOM'] ?>">
                                 <button class="btn btn-success">Editar</button>
                             </form>
                         </td>
 
                         <td>
-                            <form action="garcom/formulario-pedido.php" method="POST">
+                            <form action="garcom/cancelar-pedido.php" method="POST">
                                 <input type="hidden" name="idPedido" value="<?= $pedido['ID_PEDIDO'] ?>">
-                                <input type="hidden" name="idGarcom" value="<?= $pedido['ID_GARCOM'] ?>">
-                                <button class="btn btn-success">Servido</button>
+                                <button class="btn btn-success">Cancelar</button>
                             </form>
                         </td>
                     </tr>
@@ -73,6 +79,16 @@
             </table>
 
         <?php
+
+        if(isset($_GET['cancelado'])){
+
+            ?>
+
+                <p class="text-success">Pedido cancelado com sucesso!</p>
+
+            <?php
+
+        }
 
     }
     else{
