@@ -1,22 +1,17 @@
- <?php include("../head.php"); 
- 
- if(array_key_exists($_GET['msg'])){
-     $msg = $_GET['msg'];
- }
+ <?php include("../head.php"); ?>
 
- ?>
- 
     <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav">
 				<a class="nav-item nav-link active" href="../index-garcom.php">Home</a>
+				<a class="nav-item nav-link" href="formulario-cliente.php">Cadastro<span class="sr-only">(current)</span></a>
 			</div>
 		</div>
 	</nav>
 
     <h1>Cadastro de Cliente</h1>
 
-    <form action="cadastro-cliente.php" method="post">
+    <form action="cadastro-cliente.php" method="POST">
         
         Nome:
         <input type="text" name="nome"></br>
@@ -30,10 +25,19 @@
         <input type="number" name="tel"></br>
         Celular:
         <input type="number" name="cel"></br>
-        <input type="submit" value="Cadastrar">
+        <button class="btn btn-success">Cadastrar</button>
 
     </form>
 
-    <?php $msg ?>
+<?php
+ if(array_key_exists($_GET['msg'])){
+    
+    $msg = $_GET['msg'];
 
-<?php include("../footer.php"); ?>
+    ?>
+    <p class="text-danger"> <?= $msg ?> </p>
+    <?php
+
+ }
+
+include("../footer.php"); ?>
