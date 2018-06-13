@@ -12,7 +12,7 @@ function cadastraPedido($conexao, $idMesa, $idTipoPrato, $idPrato, $qtdPrato, $o
               and HORARIO_FIM is null;";
 
     $query .= "insert into PEDIDO (DATA, HORARIO, HORARIO_AGENDAMENTO, OBSERVACAO, ID_CLIENTE_MESA)
-               values({$data}, {$hora}, {$horarioAgendamento}, {$obsPedido}, {$idClienteMesa});";
+               values('{$data}', '{$hora}', '{$horarioAgendamento}', '{$obsPedido}', {$idClienteMesa});";
 
     $query .= "select max(ID_PEDIDO)
                into {$idPedido}
@@ -21,14 +21,14 @@ function cadastraPedido($conexao, $idMesa, $idTipoPrato, $idPrato, $qtdPrato, $o
     if(!(is_null($idTipoPrato)){
 
         $query .= "insert into PEDIDO_PRATO (QUANTIDADE, OBSERVACAO, ID_PEDIDO, ID_PRATO)
-                   values ({$qtdPrato}, {$obsPrato}, {$idPedido}, {$idPrato});";
+                   values ({$qtdPrato}, '{$obsPrato}', {$idPedido}, {$idPrato});";
 
     }
 
     if(!(is_null($idTipoBebida)){
 
         $query .= "insert into PEDIDO_BEBIDA (QUANTIDADE, OBSERVACAO, ID_PEDIDO, ID_BEBIDA)
-                   values ({$qtdBebida}, {$obsBebida}, {$idPedido}, {$idBebida});";
+                   values ({$qtdBebida}, '{$obsBebida}', {$idPedido}, {$idBebida});";
 
     }
 

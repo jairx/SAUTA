@@ -67,6 +67,9 @@
 
         }
 
+    }
+    else{
+
         $idTipoPrato = null;
         $idPrato = null;
         $qtdPrato = null;
@@ -90,10 +93,13 @@
 
         }
 
+    }
+    else{
+
         $idTipoBebida = null;
         $idBebida = null;
         $qtdBebida = null;
-
+        
     }
 
     if(isset($_POST['obsPrato'])){

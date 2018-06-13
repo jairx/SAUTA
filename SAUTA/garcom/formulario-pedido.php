@@ -16,55 +16,79 @@
 
 <h1>Cadastro de Pedido</h1>
 
-<form action="verifica-pedido.php" method="POST">
+    <table class="table">
+
+        <form action="verifica-pedido.php" method="POST">
     
-    Tipo de Prato:
-        <?php selecionaTipoPrato($conexao) ?></br>
-    Prato:
-        <div id="prato"></div>   
-   
-    Quantidade:
-        <input type="number" name="qtdPrato"></br>
-    Observação:
-        <input type="text" name="obsPrato"></br>
-    Tipo de Bebida:
-        <?php selecionaTipoBebida($conexao) ?></br>
-    Bebida:
-        <div id="bebida"></div>
-    Quantidade:
-        <input type="number" name="qtdBebida"></br>
-    Observação:
-        <input type="text" name="obsBebida"></br>
-    Mesa:
-        <?php selecionaMesa($conexao) ?></br> 
-    Observações sobre o pedido:
-        <input type="number" name="obsPedido"></br> 
+        <tr>
+            <td>Tipo de Prato:</td>
+            <td><?php selecionaTipoPrato($conexao) ?>
+        </tr>
+        <tr>
+            <td>Prato:</td>
+            <td id="prato"></td>
+        </tr>
+        <tr>
+            <td>Quantidade:</td>
+            <td><input type="number" name="qtdPrato"></td>
+        </tr>
+        <tr>
+            <td>Observação:</td>
+            <td><input type="text" name="obsPrato"></td>
+        </tr>
+        <tr>
+            <td>Tipo de Bebida:</td>
+            <td><?php selecionaTipoBebida($conexao) ?></td>
+        </tr>
+        <tr>
+            <td>Bebida:</td>
+            <td id="bebida"></td>
+        </tr>
+        <tr>
+            <td>Quantidade:</td>
+            <td><input type="number" name="qtdBebida"></td>
+        </tr>
+        <tr>
+            <td>Observação:</td>
+            <td><input type="text" name="obsBebida"></td>
+        </tr>
+        <tr>
+            <td>Mesa:</td>
+            <td><?php selecionaMesa($conexao) ?></td>
+        </tr>
+        <tr>
+            <td>Observações sobre o pedido:</td>
+            <td><input type="text" name="obsPedido"></td>
 
-    <?php
+        </tr> 
 
-        if(isset($_GET['garcomNovoPedido'])){
+        <?php
 
-            ?>
+            if(isset($_GET['garcomNovoPedido'])){
 
-                <input type="hidden" name="garcomNovoPedido" value="227">
+                ?>
 
-            <?php
+                    <input type="hidden" name="garcomNovoPedido" value="227">
 
-        }
-        if(isset($_GET['gerenteNovoPedido'])){
+                <?php
 
-            ?>
+            }
+            if(isset($_GET['gerenteNovoPedido'])){
 
-                <input type="hidden" name="gerenteNovoPedido" value="247">
+                ?>
 
-            <?php
+                    <input type="hidden" name="gerenteNovoPedido" value="247">
 
-        }
+                <?php
 
-    ?>
-    <button class="btn btn-success">Cadastrar</button>
+            }
 
-</form>
+        ?>
+        <tr><td><button class="btn btn-success">Cadastrar</button></td></tr>
+
+        </form>
+
+    </table>
 
 <?php
 
