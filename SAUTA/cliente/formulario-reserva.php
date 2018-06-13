@@ -13,7 +13,7 @@
 
       <h1>Cadastro de Reserva</h1>
 
-      <form action="home.php">
+      <form action="cadastro-reserva.php">
 
             CPF:
             <input type="number" name="cpf"></br>	
@@ -25,7 +25,7 @@
             <input type="number" name="numero_pessoas"></br>
             Mesa:
             <input type="number" name="mesa"></br>
-            <input type="submit" value="Reservar">
+            <button class="btn btn-success">Reservar</button>
       
       </form>
 

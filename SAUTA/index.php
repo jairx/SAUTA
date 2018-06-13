@@ -12,15 +12,9 @@
 
 	<h2>Check-in de Mesa</h2></br></br>
 
-<?php include("cliente/checkin.php"); ?>
+		<?php include("cliente/checkin.php"); ?>
 
-	<h2>Pedidos</h2></br></br>
-
-		<form action="cliente/cadastro-pedido.php" method="POST">
-
-			
-
-		</form> 
+	<h2><a href:"garcom/formulario-pedido.php">Pedidos</a></h2></br></br>
 
 	<h2><a href="cliente/formulario-reserva.php">Reservas</a></h2></br></br>
 

@@ -27,7 +27,7 @@
 
         ?>
 
-            <form action="garcom/formulario-pedido?garcomNovoPedido='227'.php">
+            <form action="garcom/formulario-pedido.php?garcomNovoPedido=227">
 
                 <button class="btn btn-primary">Novo</button></br>
 

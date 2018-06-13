@@ -1,14 +1,14 @@
-<?php
+<!-- <?php
 
-    function listaTipoPrato($conexao){
+ /*   function listaTipoPrato($conexao){
 
         $query = "select * from TIPO_PRATO order by TIPO_PRATO";
 
         return mysqli_query($conexao, $query);
 
-    }
+    }*/
 
-    function listaPrato($conexao){
+    function listaPrato($conexao, $idTipoPrato){
 
         $query = "select * from PRATO where ID_TIPO_PRATO = {$idTipoPrato} order by PRATO";
 
@@ -16,62 +16,62 @@
 
     }
 
-    function listaTipoBebida($conexao){
+/*    // function listaTipoBebida($conexao){
 
-        $query = "select * from TIPO_BEBIDA order by TIPO_BEBIDA";
+    //     $query = "select * from TIPO_BEBIDA order by TIPO_BEBIDA";
 
-        return mysqli_query($conexao, $query);
+    //     return mysqli_query($conexao, $query);
 
-    }
+    // }
 
-    function listaBebida($conexao){
+    // function listaBebida($conexao){
 
-        $query = "select * from BEBIDA where ID_TIPO_BEBIDA = {$idTipoBebida} order by BEBIDA";
+    //     $query = "select * from BEBIDA where ID_TIPO_BEBIDA = {$idTipoBebida} order by BEBIDA";
 
-        return mysqli_query($conexao, $query);
+    //     return mysqli_query($conexao, $query);
 
-    }
+    // }
 
-    function listaMesa($conexao){
+    // function listaMesa($conexao){
 
-        $query = "select * from MESA order by NUMERO_LUGARES";
+    //     $query = "select * from MESA order by NUMERO_LUGARES";
 
-        return mysqli_query($conexao, $query);
+    //     return mysqli_query($conexao, $query);
 
-    }
+    // }
 
-    function selecionaMesa($conexao){
+    // function selecionaMesa($conexao){
 
-        if($mesas = listaMesa($conexao)){
+    //     if($mesas = listaMesa($conexao)){
 
-            ?>
+    //         ?>
 
-            <select name="idMesa" class="form-control">
+    //         <select name="idMesa" class="form-control">
 
-                <?php foreach($mesas as $mesa): ?>
+    //             <?php foreach($mesas as $mesa): ?>
 
-                    <option value="<?=$mesa['ID_MESA']?>">
-                        <?=$mesa['NUMERO_LUGARES']?> lugares, mesa: <?=$mesa['ID_MESA']?>
-                    </option>
+    //                 <option value="<?=$mesa['ID_MESA']?>">
+    //                     <?=$mesa['NUMERO_LUGARES']?> lugares, mesa: <?=$mesa['ID_MESA']?>
+    //                 </option>
 
-                <?php endforeach ?>
+    //             <?php endforeach ?>
 
-            </select>
+    //         </select>
 
-            <?php
+    //         <?php
 
-        }
-        else{
+    //     }
+    //     else{
 
-            $erroSelecionaMesa = mysqli_error($conexao);
+    //         $erroSelecionaMesa = mysqli_error($conexao);
 
-            ?>
+    //         ?>
 
-                <p class="text-danger">Erro ao tentar listar as mesas: <?= $erroSelecionaMesa ?></p>
+    //             <p class="text-danger">Erro ao tentar listar as mesas: <?= $erroSelecionaMesa ?></p>
 
-            <?php
+    //         <?php
 
-    }
+    // }
 
     function selecionaTipoPrato($conexao){
 
@@ -79,7 +79,11 @@
 
             ?>
 
-            <select name="idTipoPrato" class="form-control">
+            <select name="idTipoPrato" id="tipoPrato" class="form-control">
+
+                    <option value="">
+                        Escolha um tipo
+                    </option>
 
                 <?php foreach($tiposPrato as $tipo): ?>
 
@@ -108,109 +112,76 @@
 
     }
 
-    function selecionaTipoBebida($conexao){
+    // function selecionaTipoBebida($conexao){
 
-        if($tiposBebida = listaTipoBebida($conexao)){
+    //     if($tiposBebida = listaTipoBebida($conexao)){
 
-            ?>
+    //         ?>
 
-            <select name="idTipoBebida" class="form-control">
+    //         <select name="idTipoBebida" class="form-control">
 
-                <?php foreach($tiposBebida as $tipo): ?>
+    //             <?php foreach($tiposBebida as $tipo): ?>
 
-                    <option value="<?=$tipo['ID_TIPO_BEBIDA']?>">
-                        <?=$tipo['TIPO_BEBIDA']?>
-                    </option>
+    //                 <option value="<?=$tipo['ID_TIPO_BEBIDA']?>">
+    //                     <?=$tipo['TIPO_BEBIDA']?>
+    //                 </option>
 
-                <?php endforeach ?>
+    //             <?php endforeach ?>
 
-            </select>
+    //         </select>
 
-            <?php
+    //         <?php
 
-        }
-        else{
+    //     }
+    //     else{
 
-            $erroSelecionaTipoBebida = mysqli_error($conexao);
+    //         $erroSelecionaTipoBebida = mysqli_error($conexao);
 
-            ?>
+    //         ?>
 
-                <p class="text-danger">Erro ao listar os tipos de bebida: <?=$erroSelecionaTipoBebida?></p>
+    //             <p class="text-danger">Erro ao listar os tipos de bebida: <?=$erroSelecionaTipoBebida?></p>
 
-            <?php
+    //         <?php
 
-        }
+    //     }
 
-    }
+    // }
 
-    function selecionaPrato($conexao){
 
-        if($pratos = listaPrato($conexao)){
 
-            ?>
+    // function selecionaBebida($conexao){
 
-            <select name="idPrato" class="form-control">
+    //     if($bebidas = listaBebida($conexao)){
 
-                <?php foreach($pratos as $prato): ?>
+    //         ?>
 
-                    <option value="<?=$prato['ID_PRATO']?>">
-                        <?=$prato['PRATO']?>
-                    </option>
+    //         <select name="idBebida" class="form-control">
 
-                <?php endforeach ?>
+    //             <?php foreach($bebidas as $bebida): ?>
 
-            </select>
+    //                 <option value="<?=$bebida['ID_BEBIDA']?>">
+    //                     <?=$bebida['BEBIDA']?>
+    //                 </option>
 
-            <?php
+    //             <?php endforeach ?>
 
-        }
-        else{
+    //         </select>
 
-            $erroPrato = mysqli_error($conexao);
+    //         <?php
 
-            ?>
+    //     }
+    //     else{
 
-                <p class="text-danger">Erro ao listar os pratos: <?=$erroPrato?></p>
+    //         $erroBebida = mysqli_error($conexao);
 
-            <?php
+    //         ?>
 
-        }
+    //             <p class="text-danger">Erro ao listar as bebidas: <?=$erroBebida?></p>
 
-    }
+    //         <?php
 
-    function selecionaBebida($conexao){
+    //     }
 
-        if($bebidas = listaBebida($conexao)){
-
-            ?>
-
-            <select name="idBebida" class="form-control">
-
-                <?php foreach($bebidas as $bebida): ?>
-
-                    <option value="<?=$bebida['ID_BEBIDA']?>">
-                        <?=$bebida['BEBIDA']?>
-                    </option>
-
-                <?php endforeach ?>
-
-            </select>
-
-            <?php
-
-        }
-        else{
-
-            $erroBebida = mysqli_error($conexao);
-
-            ?>
-
-                <p class="text-danger">Erro ao listar as bebidas: <?=$erroBebida?></p>
-
-            <?php
-
-        }
-
-    }
+    // } -->*/
 
 ?>

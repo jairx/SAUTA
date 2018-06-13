@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <a class="nav-item nav-link active" href="../index-garcom.php">Home</a>
-            <a class="nav-item nav-link" href="formulario-cliente.php">Cadastro</span></a>
+            <a class="nav-item nav-link" href="formulario-cliente.php"><span class="">Cadastro</span></a>
         </div>
     </div>
 </nav>
@@ -21,23 +21,23 @@
     Tipo de Prato:
         <?php selecionaTipoPrato($conexao) ?></br>
     Prato:
-        <?php selecionaPrato($conexao) ?></br>
+       <?php selecionaPrato($conexao) ?></br>
     Quantidade:
         <input type="number" name="qtdPrato"></br>
     Observação:
         <textarea name="obsPrato"></br>
     Tipo de Bebida:
-        <?php selecionaTipoBebida($conexao) ?></br>
+        <?php //selecionaTipoBebida($conexao) ?></br>
     Bebida:
-        <?php selecionaBebida($conexao) ?></br>
+        <?php //selecionaBebida($conexao) ?></br>
     Quantidade:
         <input type="number" name="qtdBebida"></br>
     Observação:
         <textarea name="obsBebida"></br>
     Mesa:
-        <?php selecionaMesa($conexao) ?></br>
+        <?php //selecionaMesa($conexao) ?></br>
     Observações sobre o pedido:
-        <input type="number" name="obsPedido"></br>
+   <!--     <input type="number" name="obsPedido"></br> -->
 
     <?php
 
