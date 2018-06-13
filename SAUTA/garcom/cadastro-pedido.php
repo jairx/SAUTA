@@ -2,7 +2,6 @@
 
 include("../conecta.php");
 include("../data-hora.php");
-include("../horario-agendamento.php");
 
 function cadastraPedido($conexao, $idMesa, $idTipoPrato, $idPrato, $qtdPrato, $obsPrato, $idTipoBebida, $idBebida, $qtdBebida, $obsBebida, $obsPedido, $data, $hora, $horarioAgendamento){
 
@@ -19,14 +18,14 @@ function cadastraPedido($conexao, $idMesa, $idTipoPrato, $idPrato, $qtdPrato, $o
                into {$idPedido}
                from PEDIDO;";
 
-    if(!(is_null($idTipoPrato)) and !(is_null($idPrato)) and !(is_null($qtdPrato))){
+    if(!(is_null($idTipoPrato)){
 
         $query .= "insert into PEDIDO_PRATO (QUANTIDADE, OBSERVACAO, ID_PEDIDO, ID_PRATO)
                    values ({$qtdPrato}, {$obsPrato}, {$idPedido}, {$idPrato});";
 
     }
 
-    if(!(is_null($idTipoBebida)) and !(is_null($idBebida)) and !(is_null($qtdBebida))){
+    if(!(is_null($idTipoBebida)){
 
         $query .= "insert into PEDIDO_BEBIDA (QUANTIDADE, OBSERVACAO, ID_PEDIDO, ID_BEBIDA)
                    values ({$qtdBebida}, {$obsBebida}, {$idPedido}, {$idBebida});";
@@ -37,7 +36,7 @@ function cadastraPedido($conexao, $idMesa, $idTipoPrato, $idPrato, $qtdPrato, $o
 
 }
 
-$horarioAgendamento = horarioAgendamento($idPrato);
+$horarioAgendamento = date('H:i:s', time());
 
 if(cadastraPedido($conexao, $idMesa, $idTipoPrato, $idPrato, $qtdPrato, $obsPrato, $idTipoBebida, $idBebida, $qtdBebida, $obsBebida, $obsPedido, $data, $hora, $horarioAgendamento)){
 
