@@ -26,19 +26,19 @@
     Quantidade:
         <input type="number" name="qtdPrato"></br>
     Observação:
-        <textarea name="obsPrato"></br>
- <!--   Tipo de Bebida:
-        <?php //selecionaTipoBebida($conexao) ?></br>
+        <input type="text" name="obsPrato"></br>
+    Tipo de Bebida:
+        <?php selecionaTipoBebida($conexao) ?></br>
     Bebida:
-        <?php //selecionaBebida($conexao) ?></br>
+        <div id="bebida"></div>
     Quantidade:
         <input type="number" name="qtdBebida"></br>
     Observação:
-        <textarea name="obsBebida"></br>
+        <input type="text" name="obsBebida"></br>
     Mesa:
-        <?php //selecionaMesa($conexao) ?></br> 
+        <?php selecionaMesa($conexao) ?></br> 
     Observações sobre o pedido:
-        <input type="number" name="obsPedido"></br> --> 
+        <input type="number" name="obsPedido"></br> 
 
     <?php
 

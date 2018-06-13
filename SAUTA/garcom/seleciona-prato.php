@@ -12,7 +12,6 @@
 
     }
 
-
         if($pratos = listaPrato($conexao, $idTipoPrato)){
 
             ?>
