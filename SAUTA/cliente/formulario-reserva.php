@@ -1,4 +1,4 @@
-<?php include("../head.php"); ?>
+<?php include("../head.php");?>
 
       <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -15,18 +15,64 @@
 
       <form action="cadastro-reserva.php">
 
-            CPF:
-            <input type="number" name="cpf"></br>	
-            Data:
-            <input type="date" name="data"></br>
-            Horário: 
-            <input type="time" name="horario"></br>
-            Número de pessoas:
-            <input type="number" name="numero_pessoas"></br>
-            Mesa:
-            <input type="number" name="mesa"></br>
-            <button class="btn btn-success">Reservar</button>
+      <table class="table">
+            
+            <tr>
+                  <td>CPF:</td>
+                  <td><input type="number" name="cpf"></td>
+            </tr>
+            <tr>
+                  <td>Data:</td>
+                  <td><input type="date" name="data"></td>
+            </tr>
+            <tr>
+                  <td>Horário: </td>
+                  <td><input type="time" name="horario"></td>
+            </tr>
+            <tr>
+                  <td>Número de pessoas:</td>
+                  <td><input type="number" name="numero_pessoas"></td>
+            </tr>
+            <tr>
+                  <td>Mesa:</td>
+                  <td>
+
+                        <?php
+
+                              include("lista-mesa.php");
+
+                        ?>
+
+                  </td>
+            </tr>
+
+            <tr><td><button class="btn btn-success">Reservar</button></td></tr>
+      </table>
       
       </form>
+
+      <?php
+
+      if(isset($_REQUEST['success'])){
+
+            ?>
+
+                  <p class="text-success">Sua reserva foi efetuada com sucesso!</p>
+
+            <?php
+
+      }
+
+      if(isset($_REQUEST['error'])){
+
+            ?>
+
+            <p class="text-danger">Sua reserva não pôde ser efetuada: <?=$_REQUEST['error']?></p>
+
+            <?php
+
+      }
+
+      ?>
 
 <?php include("../footer.php"); ?>

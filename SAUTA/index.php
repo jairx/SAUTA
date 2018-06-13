@@ -14,7 +14,7 @@
 
 		<?php include("cliente/checkin.php"); ?>
 
-	<h2><a href:"garcom/formulario-pedido.php">Pedidos</a></h2></br></br>
+	<h2><a href="garcom/formulario-pedido.php">Pedidos</a></h2></br></br>
 
 	<h2><a href="cliente/formulario-reserva.php">Reservas</a></h2></br></br>
 
