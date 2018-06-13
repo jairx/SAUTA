@@ -1,15 +1,23 @@
 <?php
 
     include("../conecta.php");
-    include("lista-prato-bebida-mesa.php");
 
     $idTipoPrato = $_REQUEST['idTipoPrato'];
+
+    function listaPrato($conexao, $idTipoPrato){
+
+        $query = "select * from PRATO where ID_TIPO_PRATO = {$idTipoPrato} order by PRATO";
+
+        return mysqli_query($conexao, $query);
+
+    }
+
 
         if($pratos = listaPrato($conexao, $idTipoPrato)){
 
             ?>
 
-            <select name="idPrato" id="prato" class="form-control" onchange="getPrato()">
+            <select name="idPrato" class="form-control">
 
             <?php
 
